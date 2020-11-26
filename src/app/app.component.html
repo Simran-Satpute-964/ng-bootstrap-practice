@@ -1,1 +1,90 @@
-<button class="btn btn-outline-primary" ngbTooltip="I'll always open to the right" placement="right">Hover me</button>
+<h6>Tooltip</h6>
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 30vh;">
+  <!-- <button class="btn btn-outline-primary" ngbTooltip="I'll always open to the right" placement="right">Hover me</button> -->
+
+  <!-- tooltip will be positioned automatically to fit in the viewport -->
+  <!-- <button ngbTooltip="I'll always open to the top">Hover me</button> -->
+
+  <!-- tooltip will always be on the right, even if it doesn't fit -->
+  <!-- <button ngbTooltip="I'll always open to the right" placement="right">Hover me</button> -->
+
+  <!-- tooltip be on the left. If it doesn't fit, it will be on the right -->
+  <!-- <button ngbTooltip="I'll open to the left if not right" placement="left right">Hover me</button> -->
+
+  <!-- you can also provide an array of strings -->
+  <button ngbTooltip="I'll open to the left if not right" [placement]="['left', 'right']">Hover me</button>
+</div>
+
+<hr>
+
+<h6>Alerts</h6>
+
+<p>
+  Static self-closing alert that disappears after 20 seconds (refresh the page if it has already disappeared)
+</p>
+<ngb-alert #staticAlert *ngIf="!staticAlertClosed" (closed)="staticAlertClosed = true">Check out our awesome new
+  features!</ngb-alert>
+
+<hr />
+
+<p>
+  Show a self-closing success message that disappears after 5 seconds.
+</p>
+<ngb-alert #selfClosingAlert *ngIf="successMessage" type="success" (closed)="successMessage = ''">{{ successMessage }}
+</ngb-alert>
+<p>
+  <button class="btn btn-primary" (click)="changeSuccessMessage()">Change message</button>
+</p>
+
+<hr>
+
+<h6>Custom Alert</h6>
+
+<p>
+  <ngb-alert type="custom" [dismissible]="false"><strong>Whoa!</strong> This is a custom alert.</ngb-alert>
+</p>
+
+<hr>
+
+<h6>Collapse</h6>
+
+<p>
+  <button type="button" class="btn btn-outline-primary" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+    aria-controls="collapseExample">
+    Toggle
+  </button>
+</p>
+<div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+  <div class="card">
+    <div class="card-body">
+      You can collapse this card by clicking Toggle
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<h6>Datepicker</h6>
+
+<label>Selected date is {{ selectedDate }} </label>
+<ngb-datepicker (dateSelect)="onDateSelect($event)"></ngb-datepicker>
+
+
+<input type="text" ngbDatepicker (dateSelect)="onDateSelect($event)" #d="ngbDatepicker"/>
+<button (click)="d.toggle()">Toggle</button>
+
+
+<hr>
+
+<h6>Today's date</h6>
+
+<ng-template #t let-today="today">
+  <span *ngIf="today">12</span>
+</ng-template>
+
+<ngb-datepicker [dayTemplate]="t"></ngb-datepicker>
+
+<hr>
+
+<h6></h6>

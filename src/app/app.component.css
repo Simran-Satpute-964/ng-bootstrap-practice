@@ -1,0 +1,16 @@
+:host >>> .alert-custom {
+  color: #99004d;
+  background-color: #f169b4;
+  border-color: #800040;
+  width: 50vw;
+  margin: auto;
+}
+
+h6 {
+  text-align: center;
+  margin: 10px;
+}
+
+hr {
+  margin-bottom: 10px;
+}
